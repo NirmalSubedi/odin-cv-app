@@ -1,0 +1,23 @@
+body {
+  display: grid;
+  place-content: center;
+  margin: 0;
+}
+
+.cv {
+  width: 100vw;
+  max-width: 800px;
+  min-height: 100vh;
+  display: grid;
+  position: relative;
+
+  background-color: var(--cv-bg);
+  animation: slide-in 500ms ease-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv {
+    animation: none;
+    animation-duration: 0s;
+  }
+}

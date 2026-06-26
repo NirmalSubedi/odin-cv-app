@@ -2,7 +2,7 @@ import "../styles/CreateCVButton.css";
 
 export function CreateCVButton({ setScreen }) {
   const handleClick = () => {
-    setScreen("creation");
+    setScreen("creation-personal");
   };
 
   return (

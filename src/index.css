@@ -1,8 +1,14 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
+  --text-gray: #6b6375;
+  --text: #08060d;
   --bg: #e4e4e4;
   --cv-bg: #ffffff;
+  --dialog-bg: #deeaff;
+  --save-btn-bg: #fcfa71;
+  --placeholder-text: #757575;
+
+  --cv-entrance-transition-duration: 500ms;
+
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
@@ -66,4 +72,60 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+}
+
+dialog {
+  place-self: center;
+  margin: 0;
+  background-color: var(--dialog-bg);
+  border: 1px solid var(--text);
+  font-size: 1.6rem;
+  line-height: 1.5;
+  padding: 3rem 4rem;
+}
+
+dialog h2 {
+  text-align: center;
+  font-size: 2.26rem;
+  line-height: revert;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+dialog form {
+  display: grid;
+  gap: 1rem;
+}
+
+dialog input::placeholder {
+  font-style: italic;
+}
+
+dialog button {
+  background-color: var(--save-btn-bg);
+  border: 1px solid var(--text);
+  margin-top: 2rem;
+  font-size: 1.86rem;
+  place-self: center;
+  padding: 0 4rem;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

@@ -1,0 +1,8 @@
+.personal-entry-dialog {
+  animation: fade-in 1000ms backwards;
+  animation-delay: calc(var(--cv-entrance-transition-duration) + 100ms);
+}
+
+.personal-entry-dialog input[type="tel"] {
+  max-width: 12ch;
+}
