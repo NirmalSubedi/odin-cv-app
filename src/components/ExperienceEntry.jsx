@@ -1,16 +1,16 @@
 import { useState } from "react";
-import "../styles/EducationEntry.css";
+import "../styles/ExperienceEntry.css";
 import { DialogForm, InputField, InputList } from "./index.jsx";
 import { copyCollection } from "../utils/index.js";
 
-export function EducationEntry({
+export function ExperienceEntry({
   isOpen,
+  addExperienceData,
   screen,
   setScreen,
-  addEducationData,
 }) {
-  const [studyTitle, setStudyTitle] = useState("");
-  const [school, setSchool] = useState("");
+  const [positionTitle, setPositionTitle] = useState("");
+  const [company, setCompany] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [highlights, setHighlights] = useState([
@@ -20,10 +20,13 @@ export function EducationEntry({
 
   if (!isOpen) return;
 
-  const handleStudyTitleChange = (e) => setStudyTitle(e.target.value.trim());
-  const handleSchoolChange = (e) => setSchool(e.target.value.trim());
+  const handlePositionTitleChange = (e) =>
+    setPositionTitle(e.target.value.trim());
+  const handleCompanyChange = (e) => setCompany(e.target.value.trim());
   const handleStartDateChange = (e) => setStartDate(e.target.value.trim());
   const handleEndDateChange = (e) => setEndDate(e.target.value.trim());
+
+  const isCreationPhase = screen.startsWith("creation");
 
   const handleAddHighlightClick = () => {
     highlights.push({ id: crypto.randomUUID(), text: "" });
@@ -41,15 +44,13 @@ export function EducationEntry({
     setHighlights([...copyCollection(highlights)]);
   };
 
-  const isCreationPhase = screen.startsWith("creation");
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (isCreationPhase) {
-      const data = { studyTitle, school, startDate, endDate, highlights };
-      addEducationData(data);
-      setScreen("creation-experience");
+      const data = { positionTitle, company, startDate, endDate, highlights };
+      addExperienceData(data);
+      setScreen("edit-cv");
     }
   };
 
@@ -59,28 +60,28 @@ export function EducationEntry({
     <DialogForm
       open={isOpen}
       onSubmit={handleSubmit}
-      className="education-entry-dialog"
-      heading="Education Entry"
+      className="experience-entry-dialog"
+      heading="Experience Entry"
     >
       <InputField
         {...{
-          labelText: "Title of Study",
-          placeholder: "Bachelor of Science in Computer Science",
-          id: "study-title",
+          labelText: "Position Title",
+          placeholder: "IT Support Assistant",
+          id: "position-title",
           autoFocus: !hasOverflowed,
           required: true,
-          onChange: handleStudyTitleChange,
+          onChange: handlePositionTitleChange,
         }}
       />
       <InputField
         {...{
-          labelText: "School Name",
-          placeholder: "University of California, Los Angeles",
-          id: "school-name",
+          labelText: "Company Name",
+          placeholder: "ABC Technologies",
+          id: "company-name",
           autoComplete: "organization",
           required: true,
           spellCheck: true,
-          onChange: handleSchoolChange,
+          onChange: handleCompanyChange,
         }}
       />
       <InputField
@@ -106,9 +107,9 @@ export function EducationEntry({
       <InputList
         itemNaming={["Highlight", "Highlights"]}
         placeholderTexts={[
-          "GPA 4.0",
-          "Science Fair winner",
-          "Perfect attendance award",
+          "Reduced Page Load by 15%",
+          "Led a team of 12 engineers.",
+          "Reduced API response time by 45%",
         ]}
         items={highlights}
         hasOverflowed={hasOverflowed}
@@ -116,7 +117,7 @@ export function EducationEntry({
         onAddItemClick={handleAddHighlightClick}
       />
 
-      <button type="submit">{isCreationPhase ? "Next" : "Save"}</button>
+      <button type="submit">Save</button>
     </DialogForm>
   );
 }

@@ -1,3 +1,4 @@
+export { ExperienceEntry } from "./ExperienceEntry.jsx";
 export { EducationEntry } from "./EducationEntry.jsx";
 export { PersonalEntry } from "./PersonalEntry.jsx";
 export { InputList } from "./InputList.jsx";

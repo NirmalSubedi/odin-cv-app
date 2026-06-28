@@ -4,16 +4,23 @@ import {
   CV,
   PersonalEntry,
   EducationEntry,
+  ExperienceEntry,
 } from "./components/index.jsx";
 
 function App() {
   const [screen, setScreen] = useState("no cv");
   const [personalData, setPersonalData] = useState({});
   const [education, setEducationData] = useState([]);
+  const [experience, setExperienceData] = useState([]);
 
   const addEducationData = (data) => {
     education.push(data);
     setEducationData([...education]);
+  };
+
+  const addExperienceData = (data) => {
+    education.push(data);
+    setExperienceData([...experience]);
   };
 
   if (screen === "no cv") {
@@ -41,6 +48,17 @@ function App() {
           setScreen,
           isOpen: true,
           addEducationData,
+        }}
+      />
+    );
+  } else if (screen === "creation-experience") {
+    content = (
+      <ExperienceEntry
+        {...{
+          screen,
+          isOpen: true,
+          setScreen,
+          addExperienceData,
         }}
       />
     );

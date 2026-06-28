@@ -1,0 +1,9 @@
+.experience-entry-dialog {
+  animation: fade-in 1000ms backwards 100ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-entry-dialog {
+    animation: none;
+  }
+}

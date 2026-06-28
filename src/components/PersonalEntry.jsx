@@ -18,12 +18,12 @@ export function PersonalEntry({
 
   if (!isOpen) return;
 
-  const handleNameChange = (e) => setName(e.target.value);
-  const handleProfessionChange = (e) => setProfession(e.target.value);
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handlePhoneChange = (e) => setPhone(e.target.value);
-  const handleCityChange = (e) => setCity(e.target.value);
-  const handleProvinceChange = (e) => setProvince(e.target.value);
+  const handleNameChange = (e) => setName(e.target.value.trim());
+  const handleProfessionChange = (e) => setProfession(e.target.value.trim());
+  const handleEmailChange = (e) => setEmail(e.target.value.trim());
+  const handlePhoneChange = (e) => setPhone(e.target.value.trim());
+  const handleCityChange = (e) => setCity(e.target.value.trim());
+  const handleProvinceChange = (e) => setProvince(e.target.value.trim());
 
   const isCreationPhase = screen.startsWith("creation");
 
