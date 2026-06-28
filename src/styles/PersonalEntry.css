@@ -6,3 +6,9 @@
 .personal-entry-dialog input[type="tel"] {
   max-width: 12ch;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .personal-entry-dialog {
+    animation: none;
+  }
+}

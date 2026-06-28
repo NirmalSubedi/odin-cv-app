@@ -5,7 +5,9 @@ export function DialogForm(props) {
     <Dialog {...props}>
       <h2>{props.heading}</h2>
 
-      <form method="dialog">{props.children}</form>
+      <form method="dialog" onSubmit={props.onSubmit}>
+        {props.children}
+      </form>
     </Dialog>
   );
 }

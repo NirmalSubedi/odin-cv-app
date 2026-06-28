@@ -8,23 +8,29 @@ export function InputField({
   autoCorrect,
   autoCapitalize,
   autoFocus,
+  spellCheck,
+  max,
+  onChange,
 }) {
   return (
     <div className="form-group">
       <label htmlFor={id}>{labelText}</label>
-      <br></br>
       <input
-        type={type ?? "text"}
-        name={id}
-        id={id}
-        placeholder={placeholder ?? ""}
-        required={required}
-        autoComplete={autoComplete}
-        autoCorrect={autoCorrect}
-        autoCapitalize={autoCapitalize}
-        autoFocus={autoFocus}
+        {...{
+          placeholder,
+          type: type ?? "text",
+          id,
+          name: id,
+          required,
+          autoComplete,
+          autoCorrect,
+          autoCapitalize,
+          autoFocus,
+          spellCheck,
+          max,
+          onChange,
+        }}
       />
-      <br></br>
     </div>
   );
 }

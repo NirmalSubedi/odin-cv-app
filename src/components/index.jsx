@@ -1,4 +1,6 @@
+export { EducationEntry } from "./EducationEntry.jsx";
 export { PersonalEntry } from "./PersonalEntry.jsx";
+export { InputList } from "./InputList.jsx";
 export { InputField } from "./InputField.jsx";
 export { DialogForm } from "./DialogForm.jsx";
 export { Dialog } from "./Dialog.jsx";

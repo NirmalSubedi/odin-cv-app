@@ -1,0 +1,9 @@
+.education-entry-dialog {
+  animation: fade-in 1000ms backwards 100ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .education-entry-dialog {
+    animation: none;
+  }
+}

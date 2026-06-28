@@ -1,79 +1,119 @@
+import { useState } from "react";
 import "../styles/PersonalEntry.css";
 import { DialogForm, InputField } from "./index";
 
-export function PersonalEntry({ isOpen, screen }) {
+export function PersonalEntry({
+  isOpen,
+  screen,
+  setScreen,
+  personalData,
+  setPersonalData,
+}) {
+  const [name, setName] = useState("");
+  const [profession, setProfession] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [city, setCity] = useState("");
+  const [province, setProvince] = useState("");
+
   if (!isOpen) return;
+
+  const handleNameChange = (e) => setName(e.target.value);
+  const handleProfessionChange = (e) => setProfession(e.target.value);
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handlePhoneChange = (e) => setPhone(e.target.value);
+  const handleCityChange = (e) => setCity(e.target.value);
+  const handleProvinceChange = (e) => setProvince(e.target.value);
+
+  const isCreationPhase = screen.startsWith("creation");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (isCreationPhase) {
+      setPersonalData({
+        ...personalData,
+        ...{ name, profession, email, phone, city, province },
+      });
+      setScreen("creation-education");
+    }
+  };
 
   return (
     <DialogForm
       open={isOpen}
+      onSubmit={handleSubmit}
       className="personal-entry-dialog"
       heading="Personal Entry"
     >
       <InputField
         {...{
-          id: "name",
           labelText: "Name",
+          id: "name",
           placeholder: "John Doe",
           autoComplete: "name",
           autoFocus: true,
           required: true,
+          onChange: handleNameChange,
         }}
       />
       <InputField
         {...{
-          id: "profession",
           labelText: "Profession",
           placeholder: "Software Engineer",
+          id: "profession",
           autoComplete: "organization-title",
           required: true,
+          onChange: handleProfessionChange,
         }}
       />
       <InputField
         {...{
-          id: "email",
-          type: "email",
           labelText: "Email",
           placeholder: "johndoe@email.com",
+          id: "email",
+          type: "email",
           autoComplete: "email",
           autoCapitalize: "off",
           required: true,
+          onChange: handleEmailChange,
         }}
       />
       <InputField
         {...{
-          id: "tel",
-          type: "tel",
           labelText: "Phone Number",
           placeholder: "(123) 456-7890",
+          id: "tel",
+          type: "tel",
           autoComplete: "tel",
           required: true,
+          onChange: handlePhoneChange,
         }}
       />
       <InputField
         {...{
-          id: "city",
           labelText: "City",
           placeholder: "Austin",
+          id: "city",
           autoComplete: "address-level2",
           autoCorrect: "off",
           required: true,
+          onChange: handleCityChange,
         }}
       />
       <InputField
         {...{
-          id: "state-or-province",
           labelText: "State/Province",
           placeholder: "Texas",
+          id: "province",
           autoComplete: "address-level1",
           autoCorrect: "off",
           required: true,
+          onChange: handleProvinceChange,
         }}
       />
 
-      <button type="submit">
-        {screen.startsWith("creation") ? "Next" : "Save"}
-      </button>
+      <button type="submit">{isCreationPhase ? "Next" : "Save"}</button>
     </DialogForm>
   );
 }
