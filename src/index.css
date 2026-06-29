@@ -1,26 +1,19 @@
 :root {
   --text-gray: #6b6375;
   --text: #08060d;
+  --placeholder-text: #757575;
   --bg: #e4e4e4;
   --cv-bg: #ffffff;
   --dialog-bg: #deeaff;
   --save-btn-bg: #fcfa71;
-  --placeholder-text: #757575;
+  --edit-btn-bg: #66d6ff;
+  --add-btn-bg: #66ff8a;
+  --outline-color: #ff0000;
 
   --cv-entrance-transition-duration: 500ms;
-
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --shadow: 0 0px 22px -5px var(--text);
 
   --sans: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
 
   color-scheme: light dark;
   color: var(--text);
@@ -32,6 +25,14 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --scaler: 1;
+  --fs-h1: calc(5.65rem * var(--scaler));
+  --fs-h2: calc(4.05rem * var(--scaler));
+  --fs-h3: calc(2.71rem * var(--scaler));
+  --fs-h4: calc(2.23rem * var(--scaler));
+  --fs-h5: calc(1.92rem * var(--scaler));
+  --fs-p: calc(1.68rem * var(--scaler));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,6 +48,18 @@
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+}
+
+@media (width<=600px) {
+  :root {
+    --scaler: 0.65;
+  }
+}
+
+@media (width<=1200px) {
+  :root {
+    --scaler: 0.85;
   }
 }
 
@@ -78,6 +91,13 @@ body {
   display: grid;
   place-content: center;
   margin: 0;
+  padding: 1rem 0;
+}
+
+@media (width<=810px) {
+  body {
+    padding: 0;
+  }
 }
 
 button {
@@ -89,7 +109,7 @@ dialog {
   margin: 0;
   background-color: var(--dialog-bg);
   border: 1px solid var(--text);
-  font-size: 1.6rem;
+  font-size: var(--fs-h5);
   line-height: 1.5;
   padding: 3rem 4rem;
   width: 100vw;
@@ -98,7 +118,7 @@ dialog {
 
 dialog h2 {
   text-align: center;
-  font-size: 2.26rem;
+  font-size: var(--fs-h3);
   line-height: revert;
   margin: 0;
   margin-bottom: 2rem;
@@ -126,7 +146,7 @@ dialog button {
   background-color: var(--save-btn-bg);
   border: 1px solid var(--text);
   margin-top: 2rem;
-  font-size: 1.86rem;
+  font-size: var(--fs-h4);
   place-self: center;
   padding: 0 4rem;
 }
@@ -150,7 +170,7 @@ dialog fieldset button {
   justify-self: start;
   display: flex;
   gap: 0.25em;
-  font-size: 1.43rem;
+  font-size: var(--fs-p);
 }
 
 .sr-only {

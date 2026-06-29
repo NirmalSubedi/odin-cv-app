@@ -15,7 +15,7 @@
 .create-cv-btn {
   background-color: var(--cv-bg);
   border: none;
-  font-size: 3.374rem;
+  font-size: var(--fs-h2);
   border-radius: inherit;
   padding: 1rem;
   transition: transform calc(var(--cv-entrance-transition-duration) / 2)

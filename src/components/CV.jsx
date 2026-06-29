@@ -1,5 +1,5 @@
 import "../styles/CV.css";
 
-export function CV({ children }) {
-  return <main className="cv">{children}</main>;
+export function CV({ children, className }) {
+  return <main className={className}>{children}</main>;
 }

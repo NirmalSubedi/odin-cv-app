@@ -1,8 +1,12 @@
 .cv {
   width: 100vw;
   max-width: 800px;
-  min-height: 100vh;
+  min-height: min(100vh, max-content);
   display: grid;
+  padding: 1rem 4rem;
+  box-sizing: border-box;
+  align-content: start;
+  font-size: var(--fs-p);
 
   background-color: var(--cv-bg);
   animation: slide-in-from-top 500ms ease-in;
@@ -12,5 +16,160 @@
   .cv {
     animation: none;
     animation-duration: 0s;
+  }
+}
+
+.personal .contact p,
+.personal h1,
+.personal .title,
+.cv h2,
+.cv h3,
+.education p,
+.experience p {
+  margin: 0;
+}
+
+.cv h1,
+.cv h2,
+.cv h3 {
+  display: flex;
+  gap: 1rem;
+}
+
+.cv .personal .title,
+.cv section h2 {
+  text-transform: uppercase;
+}
+
+.cv section {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+}
+
+.cv section > *:not(h2) + * {
+  margin-top: 1rem;
+}
+
+.cv .edit-btn,
+.cv .add-btn {
+  font-size: var(--fs-p);
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  margin: 0;
+  align-self: flex-start;
+  border: none;
+  transform: scale(1);
+  transition: transform 400ms;
+}
+
+.cv .edit-btn:hover,
+.cv .edit-btn:focus,
+.cv .add-btn:hover,
+.cv .add-btn:focus {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv .edit-btn,
+  .cv .add-btn {
+    transition: none;
+  }
+}
+
+.cv .edit-btn {
+  background-color: var(--edit-btn-bg);
+}
+
+.cv .add-btn {
+  background-color: var(--add-btn-bg);
+}
+
+.personal {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  border-bottom: 3px solid var(--text);
+}
+
+.personal .contact {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: end;
+}
+
+.cv .body-container {
+  display: grid;
+  padding: 4rem 2rem;
+  gap: 4rem;
+}
+
+.cv h1 {
+  font-size: var(--fs-h1);
+  align-items: flex-end;
+  font-weight: 400;
+}
+
+.cv .body-container h2 {
+  font-size: var(--fs-h3);
+}
+
+.cv .highlights {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.cv .education .school {
+  margin-bottom: 0.25em;
+}
+
+.cv .read-mode-btn {
+  align-self: end;
+  justify-self: center;
+  background-color: var(--text);
+  color: var(--cv-bg);
+  padding: 1rem 3rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+  transform: scale(1);
+  transition: transform 400ms;
+}
+
+.cv .read-mode-btn:focus {
+  outline-color: var(--outline-color);
+}
+
+.cv .read-mode-btn:focus,
+.cv .read-mode-btn:hover {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv .read-mode-btn {
+    transition: none;
+  }
+}
+
+@media (width <= 600px) {
+  .cv {
+    padding: 0 2rem;
+  }
+
+  .cv .personal {
+    grid-auto-flow: row;
+  }
+
+  .personal .contact {
+    margin-top: 0.5rem;
+    justify-items: start;
+    gap: 0.5rem;
+  }
+
+  .cv .edit-btn,
+  .cv .add-btn {
+    /* font-size: ; */
   }
 }
